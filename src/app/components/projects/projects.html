@@ -1,1 +1,53 @@
-<p>projects works!</p>
+<section class="mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-24 mb-12 md:mb-20 lg:mb-32 overflow-hidden">
+  <div class="flex justify-between items-end mb-10">
+    <div>
+      <span class="text-primary text-xs font-bold tracking-wider block"
+        >TRABALHOS SELECIONADOS</span
+      >
+      <h2 class="text-4xl font-black italic uppercase mt-2">PROJETOS PESSOAIS</h2>
+    </div>
+
+    <div class="flex gap-4">
+      <button
+        (click)="scroll('left')"
+        class="border-2 border-primary rounded-full w-12 h-12 flex items-center justify-content-center text-primary cursor-pointer transition-colors duration-200 hover:bg-primary hover:text-white"
+        aria-label="Anterior"
+      >
+        <fa-icon [icon]="arrowLeft" class="w-6 h-6 mx-auto"></fa-icon>
+      </button>
+      <button
+        (click)="scroll('right')"
+        class="border-2 border-primary rounded-full w-12 h-12 flex items-center justify-content-center text-primary cursor-pointer transition-colors duration-200 hover:bg-primary hover:text-white"
+        aria-label="Próximo"
+      >
+        <fa-icon [icon]="arrowRight" class="w-6 h-6 mx-auto"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <div
+    #carousel
+    class="flex gap-8 overflow-x-auto scroll-smooth pb-4 scrollbar-none [&::-webkit-scrollbar]:hidden"
+  >
+    @for (project of projects(); track project.title) {
+      <div class="w-105 shrink-0 flex flex-col">
+        <div class="bg-zinc-900 rounded-xl overflow-hidden aspect-video mb-6">
+          <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover" />
+        </div>
+
+        <h3 class="text-2xl font-bold mb-3">{{ project.title }}</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6 line-clamp-3">
+          {{ project.description }}
+        </p>
+
+        <div class="flex gap-2 mt-auto">
+          @for (tag of project.tags; track tag) {
+            <span class="bg-zinc-300 text-zinc-800 px-5 py-1.5 rounded-full text-xs font-medium">
+              {{ tag }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>
