@@ -5,7 +5,7 @@
     (click)="close()"
   >
     <section
-      class="relative flex h-[calc(100vh-2rem)] w-full max-w-[96rem] flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl md:h-[calc(100vh-4rem)]"
+      class="relative flex h-[calc(100vh-2rem)] w-full max-w-384 flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl md:h-[calc(100vh-4rem)]"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
@@ -25,15 +25,57 @@
         <div
           class="grid h-full grid-rows-[auto_1fr] gap-0 overflow-hidden lg:grid-cols-[1.15fr_0.85fr] lg:grid-rows-1"
         >
-          <div class="relative min-h-[18rem] overflow-hidden bg-zinc-900 lg:min-h-0">
+          <div class="relative min-h-72 overflow-hidden bg-zinc-900 lg:min-h-0">
             <img
-              [src]="selectedProject.image"
+              [src]="currentImage()"
               [alt]="selectedProject.title"
-              class="h-full w-full object-cover"
+              class="h-full w-full object-cover object-top transition-opacity duration-300 lg:object-contain lg:object-top"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"
+              class="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent"
             ></div>
+
+            @if (hasMultipleImages()) {
+              <button
+                type="button"
+                class="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-2xl text-white transition-colors hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-label="Imagem anterior"
+                (click)="previousImage()"
+              >
+                ‹
+              </button>
+
+              <button
+                type="button"
+                class="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-2xl text-white transition-colors hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-label="Próxima imagem"
+                (click)="nextImage()"
+              >
+                ›
+              </button>
+
+              <div
+                class="absolute left-1/2 top-4 z-10 -translate-x-1/2 rounded-full border border-white/10 bg-black/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/80"
+              >
+                {{ activeImageIndex() + 1 }} / {{ images().length }}
+              </div>
+
+              <div class="absolute inset-x-0 bottom-4 z-10 flex justify-center gap-2 px-4">
+                @for (image of images(); track image; let index = $index) {
+                  <button
+                    type="button"
+                    class="h-2.5 rounded-full transition-all duration-200"
+                    [class.bg-white]="index === activeImageIndex()"
+                    [class.bg-white/40]="index !== activeImageIndex()"
+                    [class.w-8]="index === activeImageIndex()"
+                    [class.w-2.5]="index !== activeImageIndex()"
+                    [attr.aria-label]="'Ir para imagem ' + (index + 1)"
+                    [attr.aria-current]="index === activeImageIndex() ? 'true' : null"
+                    (click)="selectImage(index)"
+                  ></button>
+                }
+              </div>
+            }
 
             <div class="absolute inset-x-0 bottom-0 p-6 md:p-8 lg:p-10">
               <span class="text-xs font-bold uppercase tracking-[0.35em] text-white/70">

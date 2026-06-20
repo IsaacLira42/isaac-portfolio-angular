@@ -31,14 +31,19 @@ export class Projects {
       title: 'LiraBank',
       description:
         'Simulação de banco digital desenvolvida para demonstrar o domínio de uma stack moderna...',
-      image: 'assets/images/projetos/capa-lirabank.png',
+      image: 'assets/images/projetos/lirabank-1.png',
       tags: ['React', 'Express'],
     },
     {
       title: 'EcommerceNextJs',
       description:
         'Plataforma e-commerce com Next.js e PostgreSQL. Funcionalidades: listagem de produtos...',
-      image: 'assets/images/projetos/capa-lirashop.png',
+      image: 'assets/images/projetos/lirashop-1.png',
+      images: [
+        'assets/images/projetos/lirashop-1.png',
+        'assets/images/projetos/lirashop-2.png',
+        'assets/images/projetos/lirashop-3.png',
+      ],
       tags: ['NextJs', 'Express'],
     },
     {
