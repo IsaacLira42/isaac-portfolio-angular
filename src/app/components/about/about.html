@@ -1,1 +1,45 @@
-<p>about works!</p>
+<section class="mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-24 mb-12 md:mb-20 lg:mb-32">
+  <app-sections-titles subtitle="MINHA PESSOA" title="SOBRE MIM" />
+
+  <div class="flex flex-col md:flex-row mt-8 gap-10 lg:gap-16">
+    <!-- Minha Imagem -->
+    <div class="w-full md:w-2/5 relative shrink-0 flex justify-center md:justify-start">
+      <!-- Moldura atrás -->
+      <div
+        class="absolute top-6 left-6 w-[280px] h-[280px] sm:w-[330px] sm:h-[330px] lg:w-[412px] lg:h-[412px] rounded-xl border-3 border-primary"
+      ></div>
+
+      <!-- Imagem -->
+      <div
+        class="relative z-10 w-[280px] h-[280px] sm:w-[330px] sm:h-[330px] lg:w-[412px] lg:h-[412px] rounded-xl overflow-hidden"
+      >
+        <img src="" alt="Isaac Lira" class="h-full w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Texto sobre mim -->
+    <div class="flex flex-col w-full md:w-3/5">
+      <h3 class="text-3xl lg:text-4xl font-extrabold mb-4">Desenvolvedor Fullstack</h3>
+
+      <p class="mb-4">
+        Sou estudante de Análise e Desenvolvimento de Sistemas no IFRN-CNAT e desenvolvedor Full
+        Stack em formação. Tenho experiência prática no desenvolvimento de aplicações web e APIs
+        utilizando tecnologias como Node.js, TypeScript, React e PostgreSQL, aplicando conceitos de
+        arquitetura de software, modelagem de dados, autenticação e validação de informações.
+      </p>
+
+      <p class="mb-4">
+        Meu aprendizado é direcionado pela construção de projetos, onde aplico boas práticas de
+        desenvolvimento, versionamento de código e organização de sistemas. Tenho interesse em áreas
+        como backend, bancos de dados e segurança da informação, buscando consolidar uma base
+        técnica sólida para atuar profissionalmente no desenvolvimento de software.
+      </p>
+
+      <p>
+        <span class="text-primary">
+          "Construo sistemas pensando na manutenção, não apenas na entrega."
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
