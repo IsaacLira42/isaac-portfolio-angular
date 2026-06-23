@@ -10,10 +10,11 @@ import { Project } from '../../models/project';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '../modal/modal';
+import { SectionsTitles } from '../sections-titles/sections-titles';
 
 @Component({
   selector: 'app-projects',
-  imports: [FaIconComponent, Modal],
+  imports: [FaIconComponent, Modal, SectionsTitles],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
