@@ -1,1 +1,156 @@
-<p>contact works!</p>
+<section class="mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-24 mb-12 md:mb-20 lg:mb-32 min-h-[500px]">
+  <div class="flex w-full min-h-full">
+    <div class="flex flex-col w-1/2 pr-8 md:pr-12 lg:pr-16 flex-grow">
+      <h3 class="text-6xl font-extrabold flex flex-col mb-6">
+        <span>Vamos</span>
+        <span class="text-primary italic">Colaborar?</span>
+      </h3>
+
+      <div class="flex-grow">
+        <p class="mb-4 text-[#C4C5DA] font-poppins leading-relaxed">
+          Estou aberto a oportunidades de estágio, posições júnior e projetos onde eu possa
+          contribuir enquanto continuo desenvolvendo minhas habilidades em engenharia de software.
+        </p>
+        <p class="text-[#C4C5DA] font-poppins leading-relaxed">
+          Se você tem uma oportunidade, uma ideia de projeto ou simplesmente deseja trocar
+          experiências sobre desenvolvimento, fique à vontade para entrar em contato.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-10 mt-10 font-geist">
+        <div class="flex flex-row items-center gap-6">
+          <fa-icon class="text-2xl text-primary" [icon]="faGithub"></fa-icon>
+          <div class="flex flex-col">
+            <p class="text-[#C4C5DA]">GITHUB</p>
+            <p class="text-sm">
+              <a
+                href="https://github.com/IsaacLira42"
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+                >@IsaacLira42</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-row items-center gap-6">
+          <fa-icon class="text-2xl text-primary" [icon]="faEnvelope"></fa-icon>
+          <div class="flex flex-col">
+            <p class="text-[#C4C5DA]">E-MAIL</p>
+            <p class="text-sm">
+              <a href="mailto:isaaclira42@gmail.com" class="text-primary hover:underline"
+                >isaaclira422@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-row items-center gap-6">
+          <fa-icon class="text-2xl text-primary" [icon]="faLocationDot"></fa-icon>
+          <div class="flex flex-col">
+            <p class="text-[#C4C5DA]">LOCALIZAÇÃO</p>
+            <p class="text-sm">Natal, Brasil</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col w-1/2 flex-grow">
+      <form
+        [formGroup]="formContact"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-5 bg-[#1E1E1E] p-6 sm:p-8 rounded-2xl backdrop-blur-sm flex-grow"
+      >
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold text-[#C4C5DA] tracking-wider">NOME</label>
+          <input
+            type="text"
+            formControlName="nome"
+            placeholder="Seu nome ou empresa"
+            class="w-full bg-white text-black border rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary"
+            [class.border-red-500]="
+              formContact.controls.nome.invalid && formContact.controls.nome.touched
+            "
+            [class.border-gray-800]="
+              formContact.controls.nome.valid || formContact.controls.nome.untouched
+            "
+          />
+          @if (formContact.controls.nome.invalid && formContact.controls.nome.touched) {
+            <span class="text-xs text-red-500 font-medium"
+              >O nome precisa ter pelo menos 3 caracteres.</span
+            >
+          }
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold text-[#C4C5DA] tracking-wider">E-MAIL</label>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="exemplo@dominio.com"
+            class="w-full bg-white text-black border rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary"
+            [class.border-red-500]="
+              formContact.controls.email.invalid && formContact.controls.email.touched
+            "
+            [class.border-gray-800]="
+              formContact.controls.email.valid || formContact.controls.email.untouched
+            "
+          />
+          @if (formContact.controls.email.invalid && formContact.controls.email.touched) {
+            <span class="text-xs text-red-500 font-medium"
+              >Por favor, insira um endereço de e-mail válido.</span
+            >
+          }
+        </div>
+
+        <div class="flex flex-col gap-1.5 flex-grow">
+          <label class="text-xs font-bold text-[#C4C5DA] tracking-wider">MENSAGEM</label>
+          <textarea
+            formControlName="mensage"
+            rows="5"
+            placeholder="Descreva detalhadamente o seu projeto ou proposta..."
+            class="w-full bg-white text-black border rounded-xl px-4 py-3 outline-none resize-none transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary flex-grow"
+            [class.border-red-500]="
+              formContact.controls.mensage.invalid && formContact.controls.mensage.touched
+            "
+            [class.border-gray-800]="
+              formContact.controls.mensage.valid || formContact.controls.mensage.untouched
+            "
+          ></textarea>
+          @if (formContact.controls.mensage.invalid && formContact.controls.mensage.touched) {
+            <span class="text-xs text-red-500 font-medium"
+              >A mensagem não pode ficar vazia (máximo de 500 caracteres).</span
+            >
+          }
+        </div>
+
+        @if (sucesso) {
+          <div
+            class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 text-sm font-medium"
+          >
+            Mensagem enviada com sucesso! Responderei o mais rápido possível.
+          </div>
+        }
+        @if (erro) {
+          <div
+            class="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium"
+          >
+            Ocorreu um problema no servidor. Caso o erro persista, sinta-se à vontade para me enviar
+            diretamente pelo e-mail listado ao lado.
+          </div>
+        }
+
+        <button
+          type="submit"
+          [disabled]="enviando"
+          class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-auto"
+        >
+          @if (enviando) {
+            <span>Enviando...</span>
+          } @else {
+            <span>Enviar Mensagem</span>
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
