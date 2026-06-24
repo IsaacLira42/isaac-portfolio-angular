@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "dist/isaac-portfolio-angular/browser",
   "rewrites": [
     {
       "source": "/(.*)",
