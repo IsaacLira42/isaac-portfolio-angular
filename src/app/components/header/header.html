@@ -1,12 +1,35 @@
-<section class="mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-24 mb-12 md:mb-20 lg:mb-32">
-  <div class="w-full h-20 flex items-center justify-between text-white">
-    <h1 class="text-4xl font-black italic">IL</h1>
-    <nav class="flex gap-4">
-      <a href="/inicio">Inicio</a>
-      <a href="/projetos">Projetos</a>
-      <a href="/stack">Stack</a>
-      <a href="/sobre">Sobre</a>
-    </nav>
-    <a href="/contato" class="bg-primary text-white px-6 py-1.5 rounded-lg"> Contato </a>
-  </div>
-</section>
+<header class="fixed top-0 left-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md">
+  <section class="mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-24">
+    <div class="w-full h-20 flex items-center justify-between text-white">
+      <h1 class="text-4xl font-black italic">IL</h1>
+      <nav class="flex gap-4">
+        <a
+          (click)="scrollToSection('hero')"
+          class="cursor-pointer hover:text-primary transition-colors"
+          >Inicio</a
+        >
+        <a
+          (click)="scrollToSection('projects')"
+          class="cursor-pointer hover:text-primary transition-colors"
+          >Projetos</a
+        >
+        <a
+          (click)="scrollToSection('stack')"
+          class="cursor-pointer hover:text-primary transition-colors"
+          >Stack</a
+        >
+        <a
+          (click)="scrollToSection('sobre')"
+          class="cursor-pointer hover:text-primary transition-colors"
+          >Sobre</a
+        >
+      </nav>
+      <a
+        (click)="scrollToSection('contact')"
+        class="bg-primary text-white px-6 py-1.5 rounded-lg cursor-pointer hover:bg-primary/80 transition-colors"
+      >
+        Contato
+      </a>
+    </div>
+  </section>
+</header>
